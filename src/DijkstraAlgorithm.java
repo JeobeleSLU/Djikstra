@@ -3,9 +3,8 @@ import java.util.*;
 public class DijkstraAlgorithm {
 
     public static void dijkstra(Node source) {
-        // PriorityQueue to select the node with the smallest distance
-        PriorityQueue<Node> queue = new PriorityQueue<>(Comparator.comparingInt(Node::getDistance));
-        source.setDistance(0); // Distance to itself is zero
+        PriorityQueue<Node> queue = new PriorityQueue<>(Comparator.comparingInt(Node::getWeight));
+        source.setWeight(0); // Distance to itself is zero
         queue.add(source);
 
         while (!queue.isEmpty()) {
@@ -13,11 +12,11 @@ public class DijkstraAlgorithm {
 
             for (Edge edge : current.getEdges()) {
                 Node neighbor = edge.getEnd();
-                int newDistance = current.getDistance() + edge.getWeight();
+                int newDistance = current.getWeight() + edge.getDistance();
 
                 // Update the distance if the new distance is smaller
-                if (newDistance < neighbor.getDistance()) {
-                    neighbor.setDistance(newDistance);
+                if (newDistance < neighbor.getWeight()) {
+                    neighbor.setWeight(newDistance);
                     queue.add(neighbor);
                 }
             }
@@ -40,7 +39,7 @@ public class DijkstraAlgorithm {
 
         // Set initial distances to infinity (max value)
         for (Node node : Arrays.asList(a, b, c, d)) {
-            node.setDistance(Integer.MAX_VALUE);
+            node.setWeight(Integer.MAX_VALUE);
         }
 
         // Run Dijkstra from source node A
@@ -48,7 +47,7 @@ public class DijkstraAlgorithm {
 
         // Print distances
         for (Node node : Arrays.asList(a, b, c, d)) {
-            System.out.println("Distance from A to " + node.getName() + ": " + node.getDistance());
+            System.out.println("Distance from A to " + node.getName() + ": " + node.getWeight());
         }
     }
 }

@@ -1,15 +1,15 @@
 
 public class Edge {
-    private int weight;
+    private int distance;
     private int id = 0;
     private static int nextId = 0;
     Node start;
     Node end;
 
-    public Edge(Node start,Node end, int weight){
+    public Edge(Node start,Node end, int distance){
         this.start = start;
         this.end = end;
-        this.weight = weight;
+        this.distance = distance;
         this.id = nextId++;
 
     }
@@ -22,8 +22,8 @@ public class Edge {
         return start;
     }
 
-    public int getWeight() {
-        return weight;
+    public int getDistance() {
+        return distance;
     }
 
     /*
@@ -43,6 +43,6 @@ public class Edge {
     }
 
     public String toString(){
-        return "(" + this.start.toString() + "," + this.end.toString() + ":" + this.weight + ")";
+        return "(" + this.start.toString() + "," + this.end.toString() + ":" + this.distance + ")";
     }
 }

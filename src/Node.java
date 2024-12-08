@@ -3,7 +3,7 @@ import java.util.*;
 public class Node {
     private String name;
     private List<Edge>edges;
-    int distance;
+    int weight;
 
     public Node (String name){
         this.name = name;
@@ -44,12 +44,12 @@ public class Node {
         return Objects.hashCode(name);
     }
 
-    public void setDistance(int maxValue) {
-        this.distance = maxValue;
+    public void setWeight(int maxValue) {
+        this.weight = maxValue;
     }
 
-    public int getDistance() {
-        return this.distance;
+    public int getWeight() {
+        return this.weight;
     }
 
     @Override
